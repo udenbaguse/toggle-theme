@@ -13,7 +13,7 @@ html, body{
     cursor: pointer;
     width: 20px;
     height: 20px;
-    z-index: 2;
+    z-index: 3;
     transition: 1000ms;
     border-radius: 50%;
 }
@@ -25,9 +25,6 @@ html, body{
 
 .container{
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     right: 50px;
     top: 50px;
     width: 20px;
@@ -35,24 +32,22 @@ html, body{
 }
 
 .dark-mode{
-    position: relative;
-    transform: scale(0);
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 250vw;
-    height: 250vh;
+    position: fixed;
+    left: calc(100% - 60px);
+    top: 60px;
+    width: 220vmax;
+    height: 220vmax;
     border-radius: 50%;
     background: #161616;
-    transition: 1000ms ease-in-out;
-    display: flex;
-    flex: 0 0 auto;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: transform 1000ms ease-in-out;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .dark-mode.active{
-    transform: scale(1);
-    transition: 1000ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 h2{
@@ -62,13 +57,12 @@ h2{
     left: 50%;
     top: 40%;
     transform: translateX(-50%);
+    z-index: 2;
 }
 
 @media screen and (max-width: 768px){
     .dark-mode{
-        width: 250vw;
-        height: 250vh;
-        
-
+        width: 260vmax;
+        height: 260vmax;
     }
 }
